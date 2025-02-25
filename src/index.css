@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #00bcd4;
+  --secondary: #006064;
+  --accent: #ff4081;
+  --background: #0a192f;
+  --text: #e6f1ff;
+  --glow: rgba(0, 188, 212, 0.5);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+}
+
+.neon-border {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px var(--glow),
+              0 0 20px var(--glow);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 188, 212, 0.3);
+  background: rgba(10, 25, 47, 0.7);
+}
+
+.neon-border:hover {
+  box-shadow: 0 0 15px var(--glow),
+              0 0 30px var(--glow);
+  border-color: var(--primary);
+}
+
+.neon-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary), var(--accent));
+  z-index: -1;
+  filter: blur(15px);
+  opacity: 0.2;
+}
+
+.gradient-text {
+  background: linear-gradient(120deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cyber-button {
+  position: relative;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  border: 1px solid var(--accent);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.cyber-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(255, 64, 129, 0.4);
+  background: linear-gradient(45deg, var(--accent), var(--primary));
+}
+
+.cyber-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.cyber-button:hover::before {
+  left: 100%;
+}
+
+.animated-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 188, 212, 0.1) 0%,
+    transparent 70%
+  );
+  opacity: 0.2;
+  animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.glass-effect {
+  backdrop-filter: blur(12px);
+  background: rgba(10, 25, 47, 0.8);
+  border: 1px solid rgba(0, 188, 212, 0.1);
+}
+
+.feature-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.security-card {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 188, 212, 0.2);
+  background: rgba(10, 25, 47, 0.5);
+}
+
+.security-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 5px 15px rgba(255, 64, 129, 0.2);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px var(--glow);
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent,
+    var(--primary),
+    var(--accent),
+    transparent
+  );
+  margin: 4rem 0;
+  opacity: 0.3;
+}
+
+.nav-link {
+  position: relative;
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--primary);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.feature-icon {
+  color: var(--accent);
+  transition: all 0.3s ease;
+}
+
+.security-card:hover .feature-icon {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
+.highlight-box {
+  border: 1px solid rgba(0, 188, 212, 0.2);
+  background: rgba(0, 188, 212, 0.05);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.highlight-box:hover {
+  border-color: var(--accent);
+  background: rgba(255, 64, 129, 0.05);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
